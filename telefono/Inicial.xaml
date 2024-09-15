@@ -1,0 +1,57 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="telefono.Inicial"
+             Title="Phonebook">
+    <Grid>
+        <!-- Principal Grid -->
+        <Grid>
+            <CollectionView x:Name="ContactsListView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10">
+                                <Label Text="{Binding Name}" FontSize="18" />
+                                <Label Text="{Binding Occupation}" FontSize="14" />
+                                <Label Text="{Binding Phone}" FontSize="14" />
+                                <Label Text="{Binding Address}" FontSize="14" />
+                                <Label Text="{Binding Email}" FontSize="14" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Button x:Name="AddContactButton"
+                    Text="＋"
+                    BackgroundColor="Purple"
+                    CornerRadius="28"
+                    WidthRequest="56"
+                    HeightRequest="56"
+                    VerticalOptions="End"
+                    HorizontalOptions="End"
+                    Margin="16"
+                    TextColor="White"
+                    Clicked="OnAddContactClicked"/>
+        </Grid>
+        <StackLayout VerticalOptions="FillAndExpand">
+            <Label Text="Contacts" FontSize="Large" HorizontalOptions="Center" />
+        </StackLayout>
+        <Grid x:Name="AddContactPanel"
+              BackgroundColor="Black"
+              VerticalOptions="End"
+              HeightRequest="400"
+              Padding="20"
+              IsVisible="False"
+              TranslationY="400">
+            <StackLayout>
+                <Label Text="New Contact" FontSize="Medium" HorizontalOptions="Center" />
+                <Entry Placeholder="Name" x:Name="NameEntry" />
+                <Entry Placeholder="Occupation" x:Name="OccupationEntry" />
+                <Entry Placeholder="Phone Number" x:Name="PhoneEntry" />
+                <Entry Placeholder="Address" x:Name="AddressEntry" />
+                <Entry Placeholder="Email" x:Name="EmailEntry" />
+                <Button Text="Save Contact" Clicked="OnSaveContactClicked" />
+                <Button Text="Cancel" Clicked="OnCancelClicked" BackgroundColor="LightGray" TextColor="Black"/>
+            </StackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>
